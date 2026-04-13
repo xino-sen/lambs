@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purok League | Home & History</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:ital,wght@0,700;1,900&display=swap');
+
+        :root {
+            --sport-orange: #FF4500;
+            --deep-charcoal: #1A1A1B;
+            --stadium-white: #FFFFFF;
+            --track-gray: #E2E8F0;
+            --field-border: #000000;
+        }
+
+        body { 
+            margin: 0; 
+            background-color: var(--track-gray); 
+            font-family: 'Barlow Condensed', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION BANNER --- */
+        .nav-banner {
+            background: var(--deep-charcoal);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            border-bottom: 5px solid var(--sport-orange);
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            color: var(--stadium-white);
+            font-weight: 900;
+            font-style: italic;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; height: 100%; }
+        .nav-links a {
+            color: var(--stadium-white);
+            text-decoration: none;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            text-transform: uppercase;
+            cursor: pointer;
+            height: 70px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--sport-orange);
+            color: black;
+            transform: skew(-10deg);
+        }
+
+        /* --- SECTION LOGIC --- */
+        .section { display: none; min-height: calc(100vh - 75px); }
+        .section.active { display: block; }
+
+        /* --- HERO BANNER --- */
+        #home {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('1.jpg') center/cover no-repeat;
+            overflow: hidden;
+            border-bottom: 10px solid var(--field-border);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #home h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.85;
+            margin: 0;
+            font-style: italic;
+            text-shadow: 6px 6px 0px var(--sport-orange);
+            text-transform: uppercase;
+        }
+
+        #home p {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            max-width: 700px;
+            font-weight: 700;
+            margin: 30px auto;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--sport-orange);
+            color: white;
+            text-decoration: none;
+            padding: 18px 45px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            border: 3px solid white;
+            transform: skew(-15deg);
+            transition: 0.3s;
+            box-shadow: 8px 8px 0px black;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: var(--sport-orange);
+            transform: skew(-15deg) scale(1.05);
+            box-shadow: 4px 4px 0px black;
+        }
+
+        .card-container { padding: 50px 20px; }
+        .card {
+            background: var(--stadium-white);
+            border: 4px solid var(--field-border);
+            box-shadow: 12px 12px 0px var(--field-border);
+            padding: 40px;
+            margin: 0 auto 40px auto;
+            max-width: 1100px;
+        }
+
+        h2 {
+            font-weight: 900; font-style: italic; font-size: 2.8rem;
+            border-bottom: 8px solid var(--sport-orange);
+            display: inline-block; padding-right: 25px; margin-bottom: 30px;
+            text-transform: uppercase;
+            font-family: 'Archivo Black';
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav-banner">
+    <a href="index.html" class="nav-logo" onclick="showSection('home')">🏀 PUROK LEAGUE</a>
+    <div class="nav-links">
+        <a href="index.html" onclick="showSection('home')" id="link-home" class="active">HOME</a>
+        <a href="dashboard.html" onclick="showSection('dashboard')" id="link-dashboard">DASHBOARD</a>
+        <a href="history.html" onclick="showSection('history')" id="link-history">HISTORY</a>
+    </div>
+</nav>
+
+<section id="home" class="section active">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div style="color: var(--sport-orange); font-weight: 900; letter-spacing: 5px; margin-bottom: 10px;">TACURONG CITY</div>
+        <h1>WHERE LEGENDS<br>ARE MADE</h1>
+        <p>Experience the intensity and pride of our community. Track every play in the 2026 Purok Season.</p>
+        <a href="dashboard.html" class="cta-btn" onclick="showSection('dashboard')">ENTER CONSOLE</a>
+    </div>
+</section>
+
+
+
+<script>
+    function showSection(sectionId) {
+        // Prevent default anchor jump if necessary (optional)
+        // event.preventDefault(); 
+
+        // Hide all sections
+        document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+        
+        // Deactivate all links
+        document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+        
+        // Show target section
+        const targetSection = document.getElementById(sectionId);
+        if(targetSection) targetSection.classList.add('active');
+        
+        // Activate specific nav link
+        const targetLink = document.getElementById('link-' + sectionId);
+        if(targetLink) targetLink.classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo(0,0);
+    }
+
+    // Logic to handle direct URL access (e.g. if someone goes to index.html#history)
+    window.onload = () => {
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            showSection(hash);
+        }
+    };
+</script>
+
+</body>
+</html>
